@@ -1,0 +1,18 @@
+<div class="card my-3">
+  <div class="card-header">Summary</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12">Total Commits: {{ totalCommits }}</div>
+      <div class="col-12">Total Commits Pass: {{ totalCommitsPass }}</div>
+      <div class="col-12">Commits Rate Success: {{ totalCommitsRate }}</div>
+    </div>
+
+    <ng-content select="app-average-time-table"></ng-content>
+
+    <ng-content select="app-gantt"></ng-content>
+    <!-- <div class="row">
+      <div class="col-12">
+      </div>
+    </div> -->
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid d-flex flex-row-reverse">
+    <form class="">
+      <select
+        class="form-select"
+        name="option"
+        [(ngModel)]="userValue"
+        (change)="selectUser.emit(userValue)"
+      >
+        <option value="" selected>Select an User</option>
+        <option [value]="user" *ngFor="let user of userList">
+          {{ user }}
+        </option>
+      </select>
+    </form>
+  </div>
+</nav>

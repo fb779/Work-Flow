@@ -1,0 +1,17 @@
+<app-user-selector
+  [UserList]="userList$ | async"
+  (selectUser)="userSelect($event)"
+></app-user-selector>
+
+<main class="container">
+  <app-summary
+    [totalCommits]="totalCommits$ | async"
+    [totalCommitsPass]="totalCommitsPass$ | async"
+    [totalCommitsRate]="totalCommitsRate$ | async"
+  >
+    <app-average-time-table [data]="averageTimes$ | async">
+    </app-average-time-table>
+
+    <app-gantt> </app-gantt>
+  </app-summary>
+</main>
