@@ -9,7 +9,6 @@ import { WorkFlowService } from '../../work-flow.service';
 })
 export class WorkFlowComponent implements OnInit {
   userList$: Observable<any>;
-  userData$: Observable<any> = this._workflow.userData$;
   totalCommits$: Observable<any> = this._workflow.totalCommits$;
   totalCommitsPass$: Observable<any> = this._workflow.commitsSuccess$;
   totalCommitsRate$: Observable<any> = this._workflow.commitsRate$;

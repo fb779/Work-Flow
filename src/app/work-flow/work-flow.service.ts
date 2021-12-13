@@ -1,5 +1,13 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, map, of, switchMap } from 'rxjs';
+import {
+  BehaviorSubject,
+  combineLatest,
+  map,
+  Observable,
+  of,
+  switchMap,
+  tap,
+} from 'rxjs';
 import { Data, ICommit, EnumCommitStatus } from './data';
 
 import * as dayjs from 'dayjs';
@@ -14,10 +22,13 @@ dayjs.extend(relativeTime);
 })
 export class WorkFlowService {
   private userBS = new BehaviorSubject('');
+  private dataBS = new BehaviorSubject([]);
+
+  data$: Observable<ICommit[]> = this.dataBS.asObservable();
 
   user$ = this.userBS.asObservable();
 
-  userData$ = combineLatest([this.user$]).pipe(
+  private userData$ = combineLatest([this.user$]).pipe(
     switchMap(([user]) => {
       return this.getDataByUser(user);
     })
@@ -97,20 +108,16 @@ export class WorkFlowService {
             : '';
 
         return Object.assign({}, commit, {
-          // averageTime: endDay.diff(startDay, 'm', true).toString(),
           averageTime: String(
             years + months + days + hours + minutes + seconds
           ).trim(),
         });
       });
-    })
+    }),
+    tap((data: any) => this.dataBS.next(data))
   );
 
   constructor() {}
-
-  private getData() {
-    return of(Data);
-  }
 
   private getDataByUser(user: String | null) {
     if (!user) {
@@ -131,12 +138,6 @@ export class WorkFlowService {
         return acc;
       }, [])
     );
-
-    // return of(
-    //   Data.filter((commit, index, arr) => {
-    //     return arr.findIndex((item) => item.user == commit.user) === index;
-    //   }).map((item) => item.user)
-    // );
   }
 
   setUser(user: String) {

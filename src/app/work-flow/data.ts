@@ -1,12 +1,12 @@
 export interface ICommit {
-  event: String;
-  user: String;
-  commit_id: String;
-  start: String;
-  end: String;
-  status?: String;
-  reviewer?: String[];
-  averageTime?: String;
+  event: string;
+  user: string;
+  commit_id: string;
+  start: string;
+  end: string;
+  status?: string;
+  reviewer?: string[];
+  averageTime?: string;
 }
 
 export enum EnumCommitStatus {
@@ -75,6 +75,87 @@ export const Data: ICommit[] = [
   },
   {
     event: 'pull',
+    user: 'user1',
+    commit_id: '2',
+    status: 'success',
+    start: '2021-12-01 13:14:11',
+    end: '2021-12-01 13:15:11',
+  },
+  {
+    event: 'patch',
+    user: 'user1',
+    commit_id: '2',
+    status: 'success',
+    start: '2021-12-01 13:20:11',
+    end: '2021-12-01 13:30:11',
+  },
+  {
+    event: 'build',
+    user: 'user1',
+    commit_id: '2',
+    status: 'success',
+    start: '2021-12-01 13:35:11',
+    end: '2021-12-01 13:40:11',
+  },
+  {
+    event: 'sanity',
+    user: 'user1',
+    commit_id: '2',
+    status: 'success',
+    start: '2021-12-01 13:55:12',
+    end: '2021-12-01 14:25:11',
+  },
+  {
+    event: 'review',
+    user: 'user1',
+    reviewer: ['user3', 'user4'],
+    commit_id: '2',
+    status: 'approved',
+    start: '2021-12-01 14:35:12',
+    end: '2021-12-01 14:45:11',
+  },
+  {
+    event: 'merge',
+    user: 'user1',
+    commit_id: '2',
+    start: '2021-12-01 14:46:00',
+    end: '2021-12-01 14:47:08',
+  },
+  {
+    event: 'pull',
+    user: 'user1',
+    commit_id: '3',
+    status: 'success',
+    start: '2021-12-01 15:14:11',
+    end: '2021-12-01 15:16:11',
+  },
+  {
+    event: 'patch',
+    user: 'user1',
+    commit_id: '3',
+    status: 'success',
+    start: '2021-12-01 15:21:11',
+    end: '2021-12-01 15:22:11',
+  },
+  {
+    event: 'build',
+    user: 'user1',
+    commit_id: '3',
+    status: 'success',
+    start: '2021-12-01 15:24:11',
+    end: '2021-12-01 15:55:11',
+  },
+  {
+    event: 'sanity',
+    user: 'user1',
+    commit_id: '3',
+    status: 'failed',
+    start: '2021-12-01 16:13:12',
+    end: '2021-12-01 16:25:11',
+  },
+
+  {
+    event: 'pull',
     user: 'user2',
     commit_id: '2',
     status: 'success',
@@ -123,7 +204,7 @@ export const Data: ICommit[] = [
   },
   {
     event: 'pull',
-    user: 'user3',
+    user: 'user2',
     commit_id: '3',
     status: 'success',
     start: '2021-12-01 15:14:11',
@@ -131,7 +212,7 @@ export const Data: ICommit[] = [
   },
   {
     event: 'patch',
-    user: 'user3',
+    user: 'user2',
     commit_id: '3',
     status: 'success',
     start: '2021-12-01 15:21:11',
@@ -139,7 +220,7 @@ export const Data: ICommit[] = [
   },
   {
     event: 'build',
-    user: 'user3',
+    user: 'user2',
     commit_id: '3',
     status: 'success',
     start: '2021-12-01 15:24:11',
@@ -147,7 +228,7 @@ export const Data: ICommit[] = [
   },
   {
     event: 'sanity',
-    user: 'user3',
+    user: 'user2',
     commit_id: '3',
     status: 'failed',
     start: '2021-12-01 16:13:12',
